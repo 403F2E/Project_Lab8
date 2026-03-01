@@ -1,0 +1,11 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include_once '../service/EtudiantService.php';
+    $id = $_POST['id'];
+    $nom = $_POST['nom'];
+    $es = new EtudiantService();
+    $es->updateNom($id, $nom);
+    header('Content-Type: application/json');
+    echo json_encode($es->findAllApi());
+}
+?>
